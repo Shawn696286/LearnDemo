@@ -7,6 +7,7 @@
 #include "factory.h"
 #include "abstract_factory.h"
 #include "strategy.h"
+#include "strategy_by_founction.h"
 
 
 int main(int argc, char* argv[])
@@ -34,6 +35,10 @@ int main(int argc, char* argv[])
     else if("4" == strCmdType)
     {
         test_strategy_mode();
+    }
+    else if("5" == strCmdType)
+    {
+        test_strategy_by_funcction_mode();
     }
     else
     {
@@ -109,9 +114,19 @@ void test_abstract_factory_mode()
 
 void test_strategy_mode()
 {
+    cout << "test_strategy_mode:" << endl;
     Archer<ApcHurt>* arc = new Archer<ApcHurt>;
     arc->Attack();
 
     delete arc;
     arc = nullptr;
+}
+
+void test_strategy_by_funcction_mode()
+{
+    cout << "test_strategy_by_funcction_mode:" << endl;
+    SoldierEx* soldier = new SoldierEx(AdcHurtEx);
+    soldier->Attack();
+    delete soldier;
+    soldier = nullptr;
 }

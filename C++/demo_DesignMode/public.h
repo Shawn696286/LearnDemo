@@ -1,5 +1,6 @@
 #pragma once
 #include <iostream>
+#include <functional>
 using namespace std;
 /*
     在工厂模式中，我们在创建对象时不会对客户端暴露创建逻辑，并且是通过使用一个共同的接口来指向新创建的对象。工厂模式作为一种创建模式，一般在创建复杂对象时，考虑使用；
@@ -26,3 +27,6 @@ void test_abstract_factory_mode();
 */
 /*测试传统策略模式*/
 void test_strategy_mode();
+
+/*测试使用函数指针实现策略模式*/
+void test_strategy_by_funcction_mode();
