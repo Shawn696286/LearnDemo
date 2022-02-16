@@ -142,13 +142,17 @@
     <ClCompile Include="abstract_factory.cpp" />
     <ClCompile Include="demo_DesignMode.cpp" />
     <ClCompile Include="factory.cpp" />
+    <ClCompile Include="strategy.cpp" />
     <ClCompile Include="simple_factory.cpp" />
+    <ClCompile Include="strategy_by_founction.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="abstract_factory.h" />
     <ClInclude Include="factory.h" />
+    <ClInclude Include="strategy.h" />
     <ClInclude Include="public.h" />
     <ClInclude Include="simple_factory.h" />
+    <ClInclude Include="strategy_by_founction.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

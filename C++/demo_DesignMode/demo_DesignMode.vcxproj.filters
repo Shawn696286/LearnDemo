@@ -27,6 +27,12 @@
     <ClCompile Include="simple_factory.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="strategy.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="strategy_by_founction.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="abstract_factory.h">
@@ -39,6 +45,12 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="simple_factory.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="strategy.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="strategy_by_founction.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

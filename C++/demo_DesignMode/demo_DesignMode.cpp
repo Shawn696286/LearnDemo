@@ -6,6 +6,7 @@
 #include "simple_factory.h"
 #include "factory.h"
 #include "abstract_factory.h"
+#include "strategy.h"
 
 
 int main(int argc, char* argv[])
@@ -29,6 +30,10 @@ int main(int argc, char* argv[])
     else if("3" == strCmdType)
     {
         test_abstract_factory_mode();
+    }
+    else if("4" == strCmdType)
+    {
+        test_strategy_mode();
     }
     else
     {
@@ -100,4 +105,13 @@ void test_abstract_factory_mode()
     delete pFactory2;
     pFactory2 = nullptr;
 
+}
+
+void test_strategy_mode()
+{
+    Archer<ApcHurt>* arc = new Archer<ApcHurt>;
+    arc->Attack();
+
+    delete arc;
+    arc = nullptr;
 }
