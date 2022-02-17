@@ -14,38 +14,109 @@ int main(int argc, char* argv[])
     }
 
     std::string strCmdType = argv[1];
+    int nCmdType = atoi(strCmdType.c_str());
 
-    if("1" == strCmdType)
+    switch(nCmdType)
     {
-        test_simple_factory_mode();
-    }
-    else if("2" == strCmdType)
-    {
-        test_factory_mode();
-    }
-    else if("3" == strCmdType)
-    {
-        test_abstract_factory_mode();
-    }
-    else if("4" == strCmdType)
-    {
-        test_strategy_mode();
-    }
-    else if("5" == strCmdType)
-    {
-        test_strategy_by_funcction_mode();
-    }
-    else if("6" == strCmdType)
-    {
-        test_adapter_comb_mode();
-    }
-    else if("7" == strCmdType)
-    {
-        test_adapter_derive_mode();
-    }
-    else
-    {
-        std::cout << "param error!\n";
+        case Mode_Type_simple_factory:
+            test_simple_factory_mode();
+            break;
+
+        case Mode_Type_factory:
+            test_factory_mode();
+            break;
+
+        case Mode_Type_abstract_factory:
+            test_abstract_factory_mode();
+            break;
+
+        case Mode_Type_strategy_mode:
+            test_strategy_mode();
+            break;
+
+        case Mode_Type_strategy_by_funcction:
+            test_strategy_by_funcction_mode();
+            break;
+
+        case Mode_Type_adapter_comb:
+            test_adapter_comb_mode();
+            break;
+
+        case Mode_Type_adapter_derive:
+            test_adapter_derive_mode();
+            break;
+
+        case Mode_Type_singleton_lazy_notsafe:
+            test_singleton_lazy_notsafe_mode();
+            break;
+
+        case Mode_Type_singleton_lazy_safe:
+            test_singleton_lazy_safe_mode();
+            break;
+
+        case Mode_Type_singleton_lazy_reference_nosafe:
+            test_singleton_lazy_reference_nosafe_mode();
+            break;
+
+        case Mode_Type_singleton_hungry_safe:
+            test_singleton_hungry_safe_mode();
+            break;
+
+        case Mode_Type_prototype:
+            test_prototype_mode();
+            break;
+
+        case Mode_Type_template:
+            test_template_mode();
+            break;
+
+        case Mode_Type_builder:
+            test_builder_mode();
+            break;
+
+        case Mode_Type_facade:
+            test_facade_mode();
+            break;
+
+        case Mode_Type_composite:
+            test_composite_mode();
+            break;
+
+        case Mode_Type_agency:
+            test_agency_mode();
+            break;
+
+        case Mode_Type_flyweight:
+            test_flyweight_mode();
+            break;
+
+        case Mode_Type_bridge:
+            test_bridge_mode();
+            break;
+
+        case Mode_Type_decorative:
+            test_decorative_mode();
+            break;
+
+        case Mode_Type_memo:
+            test_memo_mode();
+            break;
+
+        case Mode_Type_mediator:
+            test_mediator_mode();
+            break;
+
+        case Mode_Type_chain_of_responsibility_mode:
+            test_chain_of_responsibility_mode();
+            break;
+
+        case Mode_Type_observer:
+            test_observer_mode();
+            break;
+
+        default:
+            std::cout << "param error!\n";
+            break;
     }
 
     return 0;

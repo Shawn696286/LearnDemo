@@ -6,6 +6,7 @@
 #include "strategy_by_founction.h"
 #include "adapter_comb.h"
 #include "adapter_derive.h"
+#include "singleton_lazy_nosafe.h"
 
 void test_simple_factory_mode()
 {
@@ -132,4 +133,89 @@ void test_adapter_derive_mode()
     oStack.Pop();
     oStack.Pop();
     oStack.Pop();
+}
+void test_singleton_lazy_notsafe_mode()
+{
+    cout << "test_singleton_lazy_notsafe_mode:" << endl;
+    printf("obj:%p,obj:%p\n", Singleton::GetInstance(), Singleton::GetInstance());
+}
+
+void test_singleton_lazy_safe_mode()
+{
+
+}
+
+void test_singleton_lazy_reference_nosafe_mode()
+{
+
+}
+
+void test_singleton_hungry_safe_mode()
+{
+
+}
+
+void test_prototype_mode()
+{
+
+}
+
+void test_template_mode()
+{
+
+}
+
+void test_builder_mode()
+{
+
+}
+
+void test_facade_mode()
+{
+
+}
+
+void test_composite_mode()
+{
+
+}
+
+void test_agency_mode()
+{
+
+}
+
+void test_flyweight_mode()
+{
+
+}
+
+void test_bridge_mode()
+{
+
+}
+
+void test_decorative_mode()
+{
+
+}
+
+void test_memo_mode()
+{
+
+}
+
+void test_mediator_mode()
+{
+
+}
+
+void test_chain_of_responsibility_mode()
+{
+
+}
+
+void test_observer_mode()
+{
+
 }

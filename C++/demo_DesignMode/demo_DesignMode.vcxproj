@@ -145,6 +145,7 @@
     <ClCompile Include="demo_DesignMode.cpp" />
     <ClCompile Include="factory.cpp" />
     <ClCompile Include="public.cpp" />
+    <ClCompile Include="singleton_lazy_nosafe.cpp" />
     <ClCompile Include="strategy.cpp" />
     <ClCompile Include="simple_factory.cpp" />
     <ClCompile Include="strategy_by_founction.cpp" />
@@ -154,6 +155,7 @@
     <ClInclude Include="adapter_comb.h" />
     <ClInclude Include="adapter_derive.h" />
     <ClInclude Include="factory.h" />
+    <ClInclude Include="singleton_lazy_nosafe.h" />
     <ClInclude Include="strategy.h" />
     <ClInclude Include="public.h" />
     <ClInclude Include="simple_factory.h" />
