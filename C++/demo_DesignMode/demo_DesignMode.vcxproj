@@ -141,6 +141,7 @@
   <ItemGroup>
     <ClCompile Include="abstract_factory.cpp" />
     <ClCompile Include="adapter_comb.cpp" />
+    <ClCompile Include="adapter_derive.cpp" />
     <ClCompile Include="demo_DesignMode.cpp" />
     <ClCompile Include="factory.cpp" />
     <ClCompile Include="strategy.cpp" />
@@ -150,6 +151,7 @@
   <ItemGroup>
     <ClInclude Include="abstract_factory.h" />
     <ClInclude Include="adapter_comb.h" />
+    <ClInclude Include="adapter_derive.h" />
     <ClInclude Include="factory.h" />
     <ClInclude Include="strategy.h" />
     <ClInclude Include="public.h" />

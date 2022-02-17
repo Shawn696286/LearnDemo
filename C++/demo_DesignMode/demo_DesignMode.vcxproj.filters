@@ -36,6 +36,9 @@
     <ClCompile Include="adapter_comb.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="adapter_derive.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="abstract_factory.h">
@@ -57,6 +60,9 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="adapter_comb.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="adapter_derive.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

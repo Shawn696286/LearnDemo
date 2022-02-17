@@ -8,6 +8,8 @@
 #include "abstract_factory.h"
 #include "strategy.h"
 #include "strategy_by_founction.h"
+#include "adapter_comb.h"
+#include "adapter_derive.h"
 
 
 int main(int argc, char* argv[])
@@ -39,6 +41,14 @@ int main(int argc, char* argv[])
     else if("5" == strCmdType)
     {
         test_strategy_by_funcction_mode();
+    }
+    else if("6" == strCmdType)
+    {
+        test_adapter_comb_mode();
+    }
+    else if("7" == strCmdType)
+    {
+        test_adapter_derive_mode();
     }
     else
     {
@@ -129,4 +139,48 @@ void test_strategy_by_funcction_mode()
     soldier->Attack();
     delete soldier;
     soldier = nullptr;
+}
+
+void test_adapter_comb_mode()
+{
+    cout << "test_adapter_comb_mode:" << endl;
+    cout << "queue:" << endl;
+    Queue oQueue;
+    oQueue.Push(1);
+    oQueue.Push(2);
+    oQueue.Push(3);
+    oQueue.Pop();
+    oQueue.Pop();
+    oQueue.Pop();
+
+    cout << "stack:" << endl;
+    Stack oStack;
+    oStack.Push(1);
+    oStack.Push(2);
+    oStack.Push(3);
+    oStack.Pop();
+    oStack.Pop();
+    oStack.Pop();
+}
+
+void test_adapter_derive_mode()
+{
+    cout << "test_adapter_derive_mode:" << endl;
+    cout << "queue:" << endl;
+    QueueEx oQueue;
+    oQueue.Push(1);
+    oQueue.Push(2);
+    oQueue.Push(3);
+    oQueue.Pop();
+    oQueue.Pop();
+    oQueue.Pop();
+
+    cout << "stack:" << endl;
+    StackEx oStack;
+    oStack.Push(1);
+    oStack.Push(2);
+    oStack.Push(3);
+    oStack.Pop();
+    oStack.Pop();
+    oStack.Pop();
 }

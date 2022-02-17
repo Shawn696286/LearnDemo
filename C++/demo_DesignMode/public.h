@@ -39,6 +39,8 @@ void test_strategy_by_funcction_mode();
     可以不使用适配器，而是直接对系统进行重构。
 */
 /*测试组合适配器模式*/
+void test_adapter_comb_mode();
 
 
 /*测试继承适配器模式*/
+void test_adapter_derive_mode();
