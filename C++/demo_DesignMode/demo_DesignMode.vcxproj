@@ -144,6 +144,7 @@
     <ClCompile Include="adapter_derive.cpp" />
     <ClCompile Include="demo_DesignMode.cpp" />
     <ClCompile Include="factory.cpp" />
+    <ClCompile Include="public.cpp" />
     <ClCompile Include="strategy.cpp" />
     <ClCompile Include="simple_factory.cpp" />
     <ClCompile Include="strategy_by_founction.cpp" />
