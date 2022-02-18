@@ -1,7 +1,11 @@
 #pragma once
 #include <iostream>
 #include <functional>
+#include <map>
 using namespace std;
+
+/*初始化test*/
+void test_init();
 
 enum Mode_Type
 {
@@ -30,6 +34,7 @@ enum Mode_Type
     Mode_Type_mediator,/*中介者模式*/
     Mode_Type_chain_of_responsibility_mode,/*责任链模式*/
     Mode_Type_observer,/*观察者模式*/
+    Mode_Type_max,
 };
 /*
     在工厂模式中，我们在创建对象时不会对客户端暴露创建逻辑，并且是通过使用一个共同的接口来指向新创建的对象。工厂模式作为一种创建模式，一般在创建复杂对象时，考虑使用；
@@ -287,3 +292,7 @@ void test_chain_of_responsibility_mode();
 */
 /*测试观察者模式*/
 void test_observer_mode();
+
+
+typedef void(*FuncTest)();
+extern map<Mode_Type, FuncTest> g_mapFuncTest;
