@@ -10,6 +10,8 @@
 #include "singleton_lazy_safe.h"
 #include "singleton_lazy_reference_nosafe.h"
 #include "singleton_hungry_safe.h"
+#include "prototype.h"
+#include "template_mode.h"
 
 
 map<Mode_Type, FuncTest> g_mapFuncTest;
@@ -194,65 +196,89 @@ void test_singleton_hungry_safe_mode()
 
 void test_prototype_mode()
 {
+    cout << "test_prototype_mode:" << endl;
+    IClone* s1 = new CSheep(1, "aaa");
+    s1->Show();
+    IClone* s2 = s1->Clone();
+    s2->Show();
 
+    delete s1;
+    s1 = nullptr;
+    delete s2;
+    s2 = nullptr;
 }
 
 void test_template_mode()
 {
+    cout << "test_template_mode:" << endl;
+    CComputerB* c1 = new CComputerB;
+    c1->Product();
 
+    delete c1;
+    c1 = nullptr;
 }
 
 void test_builder_mode()
 {
+    cout << "test_builder_mode:" << endl;
 
 }
 
 void test_facade_mode()
 {
+    cout << "test_facade_mode:" << endl;
 
 }
 
 void test_composite_mode()
 {
+    cout << "test_composite_mode:" << endl;
 
 }
 
 void test_agency_mode()
 {
+    cout << "test_agency_mode:" << endl;
 
 }
 
 void test_flyweight_mode()
 {
+    cout << "test_flyweight_mode:" << endl;
 
 }
 
 void test_bridge_mode()
 {
+    cout << "test_bridge_mode:" << endl;
 
 }
 
 void test_decorative_mode()
 {
+    cout << "test_decorative_mode:" << endl;
 
 }
 
 void test_memo_mode()
 {
+    cout << "test_memo_mode:" << endl;
 
 }
 
 void test_mediator_mode()
 {
+    cout << "test_mediator_mode:" << endl;
 
 }
 
 void test_chain_of_responsibility_mode()
 {
+    cout << "test_chain_of_responsibility_mode:" << endl;
 
 }
 
 void test_observer_mode()
 {
-
+    cout << "test_observer_mode:" << endl;
 }
