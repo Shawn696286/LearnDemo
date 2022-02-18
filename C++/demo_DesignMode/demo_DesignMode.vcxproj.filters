@@ -60,6 +60,9 @@
     <ClCompile Include="template_mode.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="builder.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="abstract_factory.h">
@@ -102,6 +105,9 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="template_mode.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="builder.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
