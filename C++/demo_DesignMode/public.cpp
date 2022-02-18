@@ -7,6 +7,9 @@
 #include "adapter_comb.h"
 #include "adapter_derive.h"
 #include "singleton_lazy_nosafe.h"
+#include "singleton_lazy_safe.h"
+#include "singleton_lazy_reference_nosafe.h"
+#include "singleton_hungry_safe.h"
 
 
 map<Mode_Type, FuncTest> g_mapFuncTest;
@@ -173,17 +176,20 @@ void test_singleton_lazy_notsafe_mode()
 
 void test_singleton_lazy_safe_mode()
 {
-
+    cout << "test_singleton_lazy_safe_mode:" << endl;
+    printf("obj:%p,obj:%p\n", SingletonEx::GetInstance(), SingletonEx::GetInstance());
 }
 
 void test_singleton_lazy_reference_nosafe_mode()
 {
-
+    cout << "test_singleton_lazy_reference_nosafe_mode:" << endl;
+    printf("obj:%p,obj:%p\n", &SingletonEx2::GetInstance(), &SingletonEx2::GetInstance());
 }
 
 void test_singleton_hungry_safe_mode()
 {
-
+    cout << "test_singleton_hungry_safe_mode:" << endl;
+    printf("obj:%p,obj:%p\n", SingletonHungry::GetInstance(), SingletonHungry::GetInstance());
 }
 
 void test_prototype_mode()

@@ -45,6 +45,15 @@
     <ClCompile Include="singleton_lazy_nosafe.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="singleton_lazy_safe.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="singleton_lazy_reference_nosafe.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="singleton_hungry_safe.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="abstract_factory.h">
@@ -72,6 +81,15 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="singleton_lazy_nosafe.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="singleton_lazy_safe.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="singleton_lazy_reference_nosafe.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="singleton_hungry_safe.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
