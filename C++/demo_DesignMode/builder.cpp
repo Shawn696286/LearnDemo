@@ -81,3 +81,14 @@ COrder* CMeatOrderBuilder::GetOrder()
     return m_pOrder;
 }
 
+CDirector::CDirector(IOrderBuilder* builder)
+{
+    m_pOrderBuilder = builder;
+}
+
+void CDirector::Construct()
+{
+    m_pOrderBuilder->SetOrderFood();
+    m_pOrderBuilder->SetOrderDrink();
+}
+

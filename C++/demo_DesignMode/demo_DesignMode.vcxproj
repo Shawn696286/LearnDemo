@@ -143,7 +143,9 @@
     <ClCompile Include="adapter_comb.cpp" />
     <ClCompile Include="adapter_derive.cpp" />
     <ClCompile Include="builder.cpp" />
+    <ClCompile Include="composite.cpp" />
     <ClCompile Include="demo_DesignMode.cpp" />
+    <ClCompile Include="facade.cpp" />
     <ClCompile Include="factory.cpp" />
     <ClCompile Include="prototype.cpp" />
     <ClCompile Include="public.cpp" />
@@ -161,6 +163,8 @@
     <ClInclude Include="adapter_comb.h" />
     <ClInclude Include="adapter_derive.h" />
     <ClInclude Include="builder.h" />
+    <ClInclude Include="composite.h" />
+    <ClInclude Include="facade.h" />
     <ClInclude Include="factory.h" />
     <ClInclude Include="prototype.h" />
     <ClInclude Include="singleton_hungry_safe.h" />

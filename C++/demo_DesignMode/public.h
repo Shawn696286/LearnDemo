@@ -3,6 +3,7 @@
 #include <functional>
 #include <mutex>
 #include <map>
+#include <list>
 using namespace std;
 
 /*≥ı ºªØtest*/

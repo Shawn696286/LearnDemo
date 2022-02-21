@@ -12,6 +12,9 @@
 #include "singleton_hungry_safe.h"
 #include "prototype.h"
 #include "template_mode.h"
+#include "builder.h"
+#include "facade.h"
+#include "composite.h"
 
 
 map<Mode_Type, FuncTest> g_mapFuncTest;
@@ -221,19 +224,65 @@ void test_template_mode()
 void test_builder_mode()
 {
     cout << "test_builder_mode:" << endl;
+    IOrderBuilder* pBuilder = new CMeatOrderBuilder;
+    CDirector* pDiretor = new CDirector(pBuilder);
+    pDiretor->Construct();
+    COrder* pOrder = pBuilder->GetOrder();
+    pOrder->Food();
+    pOrder->Drink();
 
+    delete pBuilder;
+    pBuilder = nullptr;
+
+    delete pDiretor;
+    pDiretor = nullptr;
 }
 
 void test_facade_mode()
 {
     cout << "test_facade_mode:" << endl;
-
+    CComputer oComputer;
+    oComputer.Start();
+    oComputer.Shutdown();
 }
 
 void test_composite_mode()
 {
     cout << "test_composite_mode:" << endl;
+    auto headRoot = make_shared<CHeadCompany>("Head Root Company");
 
+    auto childRoot1 = make_shared<CHeadCompany>("Child Company A");
+    auto r1 = make_shared<CResearchCompany>("Research Company A");
+    auto s1 = make_shared<CSalesCompany>("Sales Company A");
+    auto s2 = make_shared<CSalesCompany>("Sales Company B");
+    auto f1 = make_shared<CFinanceCompany>("FinanceCompany A");
+
+    childRoot1->Add(r1);
+    childRoot1->Add(s1);
+    childRoot1->Add(s2);
+    childRoot1->Add(f1);
+
+    auto childRoot2 = make_shared<CHeadCompany>("Child Company B");
+    auto r2 = make_shared<CResearchCompany>("Research Company B");
+    auto s3 = make_shared<CSalesCompany>("Sales Company C");
+    auto s4 = make_shared<CSalesCompany>("Sales Company D");
+    auto f2 = make_shared<CFinanceCompany>("FinanceCompany B");
+
+    childRoot2->Add(r2);
+    childRoot2->Add(s3);
+    childRoot2->Add(s4);
+    childRoot2->Add(f2);
+
+    headRoot->Add(childRoot1);
+    headRoot->Add(childRoot2);
+    headRoot->Display(1);
+
+    cout << "\n***************\n" << endl;
+
+    childRoot1->Remove("Sales Company B");
+    headRoot->Display(1);
+
+    cout << "\n***************\n" << endl;
 }
 
 void test_agency_mode()

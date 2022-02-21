@@ -63,6 +63,12 @@
     <ClCompile Include="builder.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="facade.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="composite.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="abstract_factory.h">
@@ -108,6 +114,12 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="builder.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="facade.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="composite.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
