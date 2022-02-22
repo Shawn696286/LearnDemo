@@ -15,6 +15,8 @@
 #include "builder.h"
 #include "facade.h"
 #include "composite.h"
+#include "agency.h"
+#include "flyweight.h"
 
 
 map<Mode_Type, FuncTest> g_mapFuncTest;
@@ -288,13 +290,26 @@ void test_composite_mode()
 void test_agency_mode()
 {
     cout << "test_agency_mode:" << endl;
-
+    CGril oGril("meilisa");
+    CManProxy oProxy = CManProxy(oGril);
+    oProxy.Profess();
 }
 
 void test_flyweight_mode()
 {
     cout << "test_flyweight_mode:" << endl;
+    CTrusteeship oTs;
+    oTs.Hosting("zhangsan", "computer");
+    oTs.Hosting("lisi", "phone");
+    oTs.Hosting("wangwu", "watch");
 
+    oTs.Display();
+
+    oTs.Hosting("zhangsan", "TT");
+    oTs.Hosting("lisi", "TT");
+    oTs.Hosting("wangwu", "TT");
+
+    oTs.Display();
 }
 
 void test_bridge_mode()

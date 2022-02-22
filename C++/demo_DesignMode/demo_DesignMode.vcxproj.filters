@@ -69,6 +69,12 @@
     <ClCompile Include="composite.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="agency.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="flyweight.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="abstract_factory.h">
@@ -120,6 +126,12 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="composite.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="agency.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="flyweight.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
