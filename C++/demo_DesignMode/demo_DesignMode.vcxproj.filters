@@ -75,6 +75,12 @@
     <ClCompile Include="flyweight.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="bridge.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="decorative.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="abstract_factory.h">
@@ -132,6 +138,12 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="flyweight.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="bridge.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="decorative.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

@@ -17,6 +17,8 @@
 #include "composite.h"
 #include "agency.h"
 #include "flyweight.h"
+#include "bridge.h"
+#include "decorative.h"
 
 
 map<Mode_Type, FuncTest> g_mapFuncTest;
@@ -315,13 +317,28 @@ void test_flyweight_mode()
 void test_bridge_mode()
 {
     cout << "test_bridge_mode:" << endl;
+    CGameeApp oGaneApp;
+    CTranslateApp oTranApp;
+    CXiaoMi oXiaoMi;
+    CHuaWei oHuaWei;
 
+    oXiaoMi.AppRun(&oGaneApp);
+    oXiaoMi.AppRun(&oTranApp);
+    oHuaWei.AppRun(&oGaneApp);
+    oHuaWei.AppRun(&oTranApp);
 }
 
 void test_decorative_mode()
 {
     cout << "test_decorative_mode:" << endl;
+    CCar oCar;
+    CDecorateLED oLedCar(&oCar);
+    CDecoratePC oPcCar(&oCar);
+    CDecorateEPB oEpbCar(&oCar);
 
+    oLedCar.Configuration();
+    oPcCar.Configuration();
+    oEpbCar.Configuration();
 }
 
 void test_memo_mode()

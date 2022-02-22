@@ -143,8 +143,10 @@
     <ClCompile Include="adapter_comb.cpp" />
     <ClCompile Include="adapter_derive.cpp" />
     <ClCompile Include="agency.cpp" />
+    <ClCompile Include="bridge.cpp" />
     <ClCompile Include="builder.cpp" />
     <ClCompile Include="composite.cpp" />
+    <ClCompile Include="decorative.cpp" />
     <ClCompile Include="demo_DesignMode.cpp" />
     <ClCompile Include="facade.cpp" />
     <ClCompile Include="factory.cpp" />
@@ -165,8 +167,10 @@
     <ClInclude Include="adapter_comb.h" />
     <ClInclude Include="adapter_derive.h" />
     <ClInclude Include="agency.h" />
+    <ClInclude Include="bridge.h" />
     <ClInclude Include="builder.h" />
     <ClInclude Include="composite.h" />
+    <ClInclude Include="decorative.h" />
     <ClInclude Include="facade.h" />
     <ClInclude Include="factory.h" />
     <ClInclude Include="flyweight.h" />
