@@ -81,6 +81,15 @@
     <ClCompile Include="decorative.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="memo.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="mediator.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="chain_of_responsibility.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="abstract_factory.h">
@@ -144,6 +153,15 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="decorative.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="memo.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="mediator.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="chain_of_responsibility.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

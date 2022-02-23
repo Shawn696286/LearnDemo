@@ -19,6 +19,8 @@
 #include "flyweight.h"
 #include "bridge.h"
 #include "decorative.h"
+#include "memo.h"
+#include "mediator.h"
 
 
 map<Mode_Type, FuncTest> g_mapFuncTest;
@@ -344,13 +346,34 @@ void test_decorative_mode()
 void test_memo_mode()
 {
     cout << "test_memo_mode:" << endl;
-
+    SGameValue oV1 = { 0, "Ak", "3K" };
+    CGame oGame(oV1);//初始值
+    oGame.AddGrade();
+    oGame.ShowValue();
+    cout << "------------------------------" << endl;
+    CCaretake oCare;
+    oCare.Save(oGame.SaveValue());//保存当前值
+    oGame.AddGrade();//修改当前值
+    oGame.ReplaceArm("M16");
+    oGame.ReplaceCorps("123");
+    oGame.ShowValue();
+    cout << "------------------------------" << endl;
+    oGame.Load(oCare.Load());//恢复存档
+    oGame.ShowValue();
 }
 
 void test_mediator_mode()
 {
     cout << "test_mediator_mode:" << endl;
+    CHouseMediator oHMediato;
+    CBuyer oBuyer(&oHMediato);
+    CSeller oSeller(&oHMediato);
 
+    oHMediato.SetBuyer(&oBuyer);
+    oHMediato.SetSeller(&oSeller);
+
+    oBuyer.SendMessage("Sell not to sell?");
+    oSeller.SendMessage("Of course selling?");
 }
 
 void test_chain_of_responsibility_mode()
