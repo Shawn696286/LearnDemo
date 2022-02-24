@@ -21,6 +21,8 @@
 #include "decorative.h"
 #include "memo.h"
 #include "mediator.h"
+#include "chain_of_responsibility.h"
+#include "observer.h"
 
 
 map<Mode_Type, FuncTest> g_mapFuncTest;
@@ -379,10 +381,41 @@ void test_mediator_mode()
 void test_chain_of_responsibility_mode()
 {
     cout << "test_chain_of_responsibility_mode:" << endl;
+    ILeader* pGeneral = new CGeneral(nullptr);
+    ILeader* pCaptain = new CCaptain(pGeneral);
+    ILeader* pMonitor = new CMonitor(pCaptain);
 
+    pMonitor->HandleRequest(Level_3);
+    pMonitor->HandleRequest(Level_2);
+    pMonitor->HandleRequest(Level_1);
+
+    delete pMonitor;
+    pMonitor = nullptr;
+    delete pCaptain;
+    pCaptain = nullptr;
+    delete pGeneral;
+    pGeneral = nullptr;
 }
 
 void test_observer_mode()
 {
     cout << "test_observer_mode:" << endl;
+
+    auto pV1 = make_shared<CTableView>("TableView1");
+    auto pV2 = make_shared<CTableView>("TableView2");
+    auto pV3 = make_shared<CTableView>("TableView3");
+    auto pV4 = make_shared<CTableView>("TableView4");
+
+    CIntDataModel oModel;
+    oModel.AddView(pV1);
+    oModel.AddView(pV2);
+    oModel.AddView(pV3);
+    oModel.AddView(pV4);
+
+    oModel.Notify();
+    cout << "-----------------------------\n" << endl;
+
+    oModel.RemoveView(pV1);
+
+    oModel.Notify();
 }

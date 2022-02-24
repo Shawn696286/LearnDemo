@@ -154,6 +154,7 @@
     <ClCompile Include="flyweight.cpp" />
     <ClCompile Include="mediator.cpp" />
     <ClCompile Include="memo.cpp" />
+    <ClCompile Include="observer.cpp" />
     <ClCompile Include="prototype.cpp" />
     <ClCompile Include="public.cpp" />
     <ClCompile Include="singleton_hungry_safe.cpp" />
@@ -180,6 +181,7 @@
     <ClInclude Include="flyweight.h" />
     <ClInclude Include="mediator.h" />
     <ClInclude Include="memo.h" />
+    <ClInclude Include="observer.h" />
     <ClInclude Include="prototype.h" />
     <ClInclude Include="singleton_hungry_safe.h" />
     <ClInclude Include="singleton_lazy_nosafe.h" />
