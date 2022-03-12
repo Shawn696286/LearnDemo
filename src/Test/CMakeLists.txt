@@ -31,12 +31,29 @@ else()
 	aux_source_directory(src SOURCES)
 endif()
 
-# 将源代码添加到此项目的可执行文件。
-add_executable (${EXE_NAME} ${SOURCES})
-
 # 添加包含目录
 include_directories(
 	.
 	./src
 	./src/thread
+	../../common/inc
 	)
+	
+# 添加库目录
+link_directories(
+	../../common/lib
+)
+
+#链接库(需在add_executable前)
+if(UNIX)
+link_libraries(
+	logy
+	)
+else()
+link_libraries(
+	logy
+	)
+endif()
+
+# 将源代码添加到此项目的可执行文件。
+add_executable (${EXE_NAME} ${SOURCES})

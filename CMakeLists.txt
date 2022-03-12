@@ -9,7 +9,7 @@ project ("LearnDemo")
 set(PROJECT_ROOT_DIR ${PROJECT_SOURCE_DIR})
 
 # 设置库和可执行程序输出目录
-set(LIBRARY_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/bin)
+set(LIBRARY_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/common/lib)
 set(EXECUTABLE_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/bin)
 
 # 设置编译版本
@@ -23,3 +23,4 @@ endif()
 add_subdirectory ("src/TemplateProject")
 add_subdirectory ("src/DesignMode")
 add_subdirectory ("src/Test")
+add_subdirectory ("src/LogY")
