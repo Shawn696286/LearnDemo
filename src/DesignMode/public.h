@@ -4,6 +4,9 @@
 #include <mutex>
 #include <map>
 #include <list>
+#include <stdio.h>
+#include <memory>
+#include<algorithm>
 using namespace std;
 
 /*≥ı ºªØtest*/

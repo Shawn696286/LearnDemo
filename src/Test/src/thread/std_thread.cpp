@@ -76,7 +76,7 @@ void CMyThread::my_printf(string msg)
     while(m_bRuning)
     {
         cout << "this is thread ,msg:" << msg << ",count:" << ++n << endl;
-        _sleep(1000);
+        std::this_thread::sleep_for(std::chrono::milliseconds(1000));
     }
 
     cout << "thread exit\n";

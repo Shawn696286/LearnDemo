@@ -58,18 +58,18 @@ link_libraries(
 #############################################################
 
 # 生成安装目录，并拷贝所有依赖及资源
-    install(TARGETS ${EXE_NAME} DESTINATION ${PROJECT_ROOT_DIR}/bin)
+    #install(TARGETS ${EXE_NAME} DESTINATION ${PROJECT_ROOT_DIR}/bin)
 
-install(DIRECTORY ${PROJECT_ROOT_DIR}/bin DESTINATION ${PROJECT_ROOT_DIR}/install/${EXE_NAME} 
-	FILES_MATCHING
-	PATTERN "*.rc"
-)
+#install(DIRECTORY ${PROJECT_ROOT_DIR}/bin DESTINATION ${PROJECT_ROOT_DIR}/install/${EXE_NAME} 
+#	FILES_MATCHING
+#	PATTERN "*.rc"
+#)
 
-if(MSVC)
-    install(DIRECTORY ${PROJECT_ROOT_DIR}/bin DESTINATION ${PROJECT_ROOT_DIR}/install/${EXE_NAME} FILES_MATCHING PATTERN "*.dll")
-else()
-    install(DIRECTORY ${PROJECT_ROOT_DIR}/bin DESTINATION ${PROJECT_ROOT_DIR}/install/${EXE_NAME} FILES_MATCHING PATTERN "*.so")
-endif()
+#if(MSVC)
+ #   install(DIRECTORY ${PROJECT_ROOT_DIR}/bin DESTINATION ${PROJECT_ROOT_DIR}/install/${EXE_NAME} FILES_MATCHING PATTERN "*.dll")
+#else()
+ #   install(DIRECTORY ${PROJECT_ROOT_DIR}/bin DESTINATION ${PROJECT_ROOT_DIR}/install/${EXE_NAME} FILES_MATCHING PATTERN "*.so")
+#endif()
 
 #############################################################
 # TODO: 如有需要，请添加测试并安装目标。

@@ -12,6 +12,8 @@ set(PROJECT_ROOT_DIR ${PROJECT_SOURCE_DIR})
 set(LIBRARY_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/common/lib)
 set(EXECUTABLE_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/bin)
 
+set(CMAKE_CXX_FLAGS   "-std=c++11 -g -Wall -fPIC -pthread -std=c++14") 
+
 # 设置编译版本
 if(1)
 	set(CMAKE_BUILD_TYPE DEBUG)
@@ -24,3 +26,5 @@ add_subdirectory ("src/TemplateProject")
 add_subdirectory ("src/DesignMode")
 add_subdirectory ("src/Test")
 add_subdirectory ("src/LogY")
+
+
