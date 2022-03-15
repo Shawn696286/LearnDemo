@@ -14,6 +14,7 @@ int main()
     #else
     CTcpServer oServer;
     oServer.InitServer(12346);
+    oServer.Select();
     #endif
 
     return 0;

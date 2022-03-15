@@ -13,6 +13,11 @@ set(EXE_NAME network)
 	file(GLOB_RECURSE PROJECT_CPPS    *.cpp)
 
 	set(SOURCES ${PROJECT_HEADERS} ${PROJECT_CPPS})
+	
+#链接库(需在add_executable前)
+link_libraries(
+	logy
+	)
 
 # 将源代码添加到此项目的可执行文件。
 add_executable (${EXE_NAME} ${SOURCES})

@@ -7,7 +7,7 @@ int CTcpClient::InitClient(std::string strIp, int nPort)
 
     if(m_nSock == INVALID_SOCKET)
     {
-        printf("create socket failed,ret = %d\n", m_nSock);
+        LOGY_DEBUG("create socket failed,ret = %d\n", m_nSock);
         return Y_Ret_Failed;
     }
 
@@ -23,7 +23,7 @@ int CTcpClient::InitClient(std::string strIp, int nPort)
 
     if(SOCKET_ERROR == ret)
     {
-        printf("socket connect failed\n");
+        LOGY_DEBUG("socket connect failed\n");
         closesocket(m_nSock);
         return Y_Ret_Failed;
     }
@@ -37,7 +37,7 @@ int CTcpClient::Send(std::string strMsg)
 
     if(SOCKET_ERROR == nRet)
     {
-        printf("socket send failed\n");
+        LOGY_DEBUG("socket send failed\n");
         return Y_Ret_Failed;
     }
 
@@ -45,7 +45,7 @@ int CTcpClient::Send(std::string strMsg)
 
     if(SOCKET_ERROR == nRet)
     {
-        printf("socket recv failed\n");
+        LOGY_DEBUG("socket recv failed\n");
         return Y_Ret_Failed;
     }
 
@@ -55,6 +55,6 @@ int CTcpClient::Send(std::string strMsg)
 
 int CTcpClient::OnRecv(std::string strMsg)
 {
-    printf("socket recv msg = %s\n", strMsg.c_str());
+    LOGY_DEBUG("socket recv msg = %s\n", strMsg.c_str());
     return Y_Ret_Ok;
 }

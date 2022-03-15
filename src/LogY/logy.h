@@ -10,6 +10,8 @@ public:
 
     void logy(const char* func, const char* file, const int line,
               const char* type, const char* format, ...);
+    void logy(const char* func, const char* file, const int line,
+              const char* type, const std::string& strLog);
 private:
     Logy();
     ~Logy();

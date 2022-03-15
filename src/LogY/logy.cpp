@@ -68,6 +68,25 @@ void Logy::logy(const char* func, const char* file, const int line,
            file, line, strLog.c_str());
 }
 
+void Logy::logy(const char* func, const char* file, const int line, const char* type, const std::string& strLog)
+{
+    // 写入到日志文件中
+    if(g_pFile != NULL)
+    {
+        fprintf(g_pFile, "[%s]%s[%s@%s:%d] %s\n", type, GetLocalTime().c_str(), func,
+                file, line, strLog.c_str());
+        fflush(g_pFile);
+    }
+    else
+    {
+        fprintf(stderr, "[%s]%s[%s@%s:%d] %s\n", type, GetLocalTime().c_str(), func,
+                file, line, strLog.c_str());
+    }
+
+    printf("[%s]%s[%s@%s:%d] %s\n", type, GetLocalTime().c_str(), func,
+           file, line, strLog.c_str());
+}
+
 int Logy::WriteFile(std::string)
 {
     return 0;

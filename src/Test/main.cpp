@@ -8,7 +8,7 @@ using namespace std;
 
 int main()
 {
-    Y_LOG_DEBUG("test logy\n");
+    LOGY_DEBUG("test logy\n");
     CTest t;
     t.Worker();
     return 0;

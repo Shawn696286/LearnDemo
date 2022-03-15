@@ -19,3 +19,4 @@
 
 
 #include "../common/common_def.h"
+#include "../../common/inc/logyapi.h"
