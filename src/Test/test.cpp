@@ -1,11 +1,13 @@
 #include "test.h"
 #include "std_thread.h"
+#include "std_ptr.h"
 using namespace std;
 
 CTest::CTest()
 {
     m_mapStrAndFun[to_string(Test_Type_Thread_Join)] = &CTest::test_thread_join;
     m_mapStrAndFun[to_string(Test_Type_Thread_Wait)] = &CTest::test_thread_wait;
+    m_mapStrAndFun[to_string(Test_Type_Shared_From_This)] = &CTest::test_shared_ptr_from_this;
 }
 
 void CTest::Worker()
@@ -14,7 +16,7 @@ void CTest::Worker()
 
     while("exit" != strInput)
     {
-        cout << "input :[1~" << Test_Type_Max << "):";
+        cout << "input :[1~" << Test_Type_Max - 1 << "]:";
         cin >> strInput;
         auto iter = m_mapStrAndFun.find(strInput);
 
@@ -55,4 +57,12 @@ void CTest::test_thread_wait()
         }
     }
 
+}
+
+void CTest::test_shared_ptr_from_this()
+{
+    cout << "test_shared_ptr_from_this" << endl;
+    CMySharedThis oSha;
+    oSha.Init();
+    oSha.UnInit();
 }

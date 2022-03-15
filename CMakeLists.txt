@@ -25,6 +25,7 @@ endif()
 add_subdirectory ("src/TemplateProject")
 add_subdirectory ("src/DesignMode")
 add_subdirectory ("src/Test")
+add_subdirectory ("src/Network")
 add_subdirectory ("src/LogY")
 
 

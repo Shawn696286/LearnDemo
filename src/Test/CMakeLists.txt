@@ -36,6 +36,7 @@ include_directories(
 	.
 	./src
 	./src/thread
+	./src/smart_pointers
 	../../common/inc
 	)
 	
