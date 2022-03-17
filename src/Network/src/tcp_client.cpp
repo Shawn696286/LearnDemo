@@ -12,14 +12,19 @@ int CTcpClient::InitClient(std::string strIp, int nPort)
     }
 
     //指定连接的服务端信息
-    SOCKADDR_IN addrServ;
+    sockaddr_in addrServ;
     addrServ.sin_family = AF_INET;
     addrServ.sin_port = htons(nPort);
     //客户端只需要连接指定的服务器地址，127.0.0.1是本机的回环地址
+    #ifdef _WIN32
     addrServ.sin_addr.S_un.S_addr = inet_addr(strIp.c_str());
+    #else
+    addrServ.sin_addr.s_addr = inet_addr(strIp.c_str());
+    #endif // _WIN32
+
 
     // 服务器Bind 客户端是进行连接
-    int ret = connect(m_nSock, (SOCKADDR*)&addrServ, sizeof(SOCKADDR));//开始连接
+    int ret = connect(m_nSock, (sockaddr*)&addrServ, sizeof(sockaddr_in));//开始连接
 
     if(SOCKET_ERROR == ret)
     {

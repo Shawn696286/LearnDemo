@@ -11,10 +11,14 @@ int main()
     CTcpClient oClient;
     oClient.InitClient("127.0.0.1", 12345);
     oClient.Send("qwertyuiop");
-    #else
+    #elif 0
     CTcpServer oServer;
     oServer.InitServer(12346);
     oServer.Select();
+    #else
+    CTcpServer oServer;
+    oServer.InitServer(12346);
+    oServer.Epoll();
     #endif
 
     return 0;

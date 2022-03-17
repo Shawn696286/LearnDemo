@@ -1,6 +1,7 @@
 #include "logyapi.h"
 #include "logy.h"
 #include <stdarg.h>
+#include <string.h>
 
 static const int LEN_LOG_STR = 4096;
 static char g_log_str[LEN_LOG_STR] = { 0 };
