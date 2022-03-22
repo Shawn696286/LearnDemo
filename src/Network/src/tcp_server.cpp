@@ -353,3 +353,8 @@ int CTcpServer::Epoll()
 
     return Y_Ret_Ok;
 }
+
+int CTcpServer::GetListenFd()
+{
+    return m_nListenSock;
+}

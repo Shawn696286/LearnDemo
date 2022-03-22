@@ -25,6 +25,9 @@ public:
 
     //< tcp服务器epoll
     int Epoll();
+
+    //< 获取ListenFd
+    int GetListenFd();
 private:
     //< 监听sock
     SOCKET m_nListenSock;

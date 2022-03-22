@@ -3,6 +3,7 @@
 #include <sstream>
 #include "tcp_client.h"
 #include "tcp_server.h"
+#include "tcp_reactor.h"
 using namespace std;
 
 int main()
@@ -17,8 +18,11 @@ int main()
     oServer.Select();
     #else
     CTcpServer oServer;
+    CTcpReactor oReactor;
     oServer.InitServer(12346);
-    oServer.Epoll();
+    //oServer.Epoll();
+    oReactor.InitReactor(oServer.GetListenFd());
+    oReactor.Worker();
     #endif
 
     return 0;

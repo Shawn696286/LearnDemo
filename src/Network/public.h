@@ -22,6 +22,16 @@
 #include <string>
 #include <memory>
 #include <string.h>
+#include <functional>
 
 #include "../common/common_def.h"
 #include "../../common/inc/logyapi.h"
+
+//< 缓存大小
+const int MAX_BUF_SIZE = 1024;
+
+//< 接收缓存大小
+const int MAX_RECV_BUF = 1024 * 10;
+
+//< epoll 最大事件数
+const int MAX_POLL_SIZE = 1024;
