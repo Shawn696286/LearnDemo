@@ -19,7 +19,12 @@ int CTcpReactor::InitReactor(int nListenFd)
     }
 
     m_nListenFd = nListenFd;
+    #ifdef USE_MULTI_CB
     SetEventCallback(m_nListenFd, &CTcpReactor::accept_callback, Accept_Event, NULL);
+    #else
+    SetEventCallback(m_nListenFd, &CTcpReactor::events_callback, Accept_Event, NULL);
+    #endif // USE_MULTI_CB
+
     m_bRunning = true;
     return Y_Ret_Ok;
 }
@@ -46,6 +51,7 @@ int CTcpReactor::SetEventCallback(int nFd, event_callback pCb, EEventType nEvent
 
     pEventItem->nFd = nFd;
     pEventItem->arg = arg;
+    #ifdef USE_MULTI_CB
 
     switch(nEvent)
     {
@@ -67,6 +73,29 @@ int CTcpReactor::SetEventCallback(int nFd, event_callback pCb, EEventType nEvent
         default:
             break;
     }
+
+    #else
+    pEventItem->eventcb = pCb;
+
+    switch(nEvent)
+    {
+        case Read_Event:
+            oEv.events = EPOLLIN;
+            break;
+
+        case Write_Event:
+            oEv.events = EPOLLOUT;
+            break;
+
+        case Accept_Event:
+            oEv.events = EPOLLIN;
+            break;
+
+        default:
+            break;
+    }
+
+    #endif // USE_MULTI_CB
 
     oEv.data.ptr = pEventItem.get();
 
@@ -131,15 +160,15 @@ void CTcpReactor::Worker()
         {
             SEventItem* item = (SEventItem*)events[i].data.ptr;
             int connfd = item->nFd;
+            #ifdef USE_MULTI_CB
 
-            if(connfd == m_nListenFd)    //
+            if(connfd == m_nListenFd)     //
             {
                 (this->*(item->acceptcb))(m_nListenFd, 0, NULL);
             }
             else
             {
-
-                if(events[i].events & EPOLLIN)    //
+                if(events[i].events & EPOLLIN)     //
                 {
                     (this->*(item->readcb))(connfd, 0, NULL);
                 }
@@ -149,6 +178,28 @@ void CTcpReactor::Worker()
                     (this->*(item->writecb))(connfd, 0, NULL);
                 }
             }
+
+            #else
+
+            if(connfd == m_nListenFd)     //
+            {
+                (this->*(item->eventcb))(m_nListenFd, Accept_Event, NULL);
+            }
+            else
+            {
+                if(events[i].events & EPOLLIN)     //
+                {
+                    (this->*(item->eventcb))(connfd, Read_Event, NULL);
+                }
+
+                if(events[i].events & EPOLLOUT)
+                {
+                    (this->*(item->eventcb))(connfd, Write_Event, NULL);
+                }
+            }
+
+            #endif // USE_MULTI_CB
+
         }
     }
 }
@@ -184,7 +235,11 @@ int CTcpReactor::read_callback(int nFd, int event, void* arg)
         pEventItem->nSLen = nRet;
 
         LOGY_DEBUG("readcb:%s\n", pEventItem->pRBuffer);
+        #ifdef USE_MULTI_CB
         SetEventCallback(nFd, &CTcpReactor::write_callback, Write_Event, NULL);
+        #else
+        SetEventCallback(nFd, &CTcpReactor::events_callback, Write_Event, NULL);
+        #endif // USE_MULTI_CB
     }
 
     #endif
@@ -211,11 +266,19 @@ int CTcpReactor::write_callback(int nFd, int event, void* arg)
 
     if(ret < pEventItem->nSLen)
     {
+        #ifdef USE_MULTI_CB
         SetEventCallback(nFd, &CTcpReactor::write_callback, Write_Event, NULL);
+        #else
+        SetEventCallback(nFd, &CTcpReactor::events_callback, Write_Event, NULL);
+        #endif // USE_MULTI_CB
     }
     else
     {
+        #ifdef USE_MULTI_CB
         SetEventCallback(nFd, &CTcpReactor::read_callback, Read_Event, NULL);
+        #else
+        SetEventCallback(nFd, &CTcpReactor::events_callback, Read_Event, NULL);
+        #endif // USE_MULTI_CB
     }
 
     return Y_Ret_Ok;
@@ -240,6 +303,29 @@ int CTcpReactor::accept_callback(int nFd, int event, void* arg)
 
     LOGY_DEBUG("Clietn %s:%d connected\n", inet_ntoa(addrRemote.sin_addr), ntohs(addrRemote.sin_port));
 
+    #ifdef USE_MULTI_CB
     SetEventCallback(nNewFd, &CTcpReactor::read_callback, Read_Event, NULL);
+    #else
+    SetEventCallback(nNewFd, &CTcpReactor::events_callback, Read_Event, NULL);
+    #endif // USE_MULTI_CB
+    return Y_Ret_Ok;
+}
+
+//< event»Øµ÷º¯Êý
+int CTcpReactor::events_callback(int nFd, int event, void* arg)
+{
+    if(event == Accept_Event)
+    {
+        accept_callback(nFd, event, arg);
+    }
+    else if(event == Read_Event)
+    {
+        read_callback(nFd, event, arg);
+    }
+    else if(event == Write_Event)
+    {
+        write_callback(nFd, event, arg);
+    }
+
     return Y_Ret_Ok;
 }

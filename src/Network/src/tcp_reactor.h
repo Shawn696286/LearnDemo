@@ -19,6 +19,7 @@ struct SEventItem
     event_callback readcb;
     event_callback writecb;
     event_callback acceptcb;
+    event_callback eventcb;
     char pSBuffer[MAX_BUF_SIZE];
     int nSLen;
     char pRBuffer[MAX_BUF_SIZE];
@@ -31,6 +32,7 @@ struct SEventItem
         readcb = nullptr;
         writecb = nullptr;
         acceptcb = nullptr;
+        eventcb = nullptr;
         memset(pSBuffer, 0, MAX_BUF_SIZE);
         nSLen = 0;
         memset(pRBuffer, 0, MAX_BUF_SIZE);
@@ -65,6 +67,8 @@ private:
     //< accept回调函数
     int accept_callback(int nFd, int event, void* arg);
 
+    //< event回调函数
+    int events_callback(int nFd, int event, void* arg);
 private:
     //< epoll_fd
     int m_nEpollFd;
