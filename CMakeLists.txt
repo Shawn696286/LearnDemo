@@ -22,12 +22,16 @@ else()
 endif()
 
 # 包含子项目。
+
+if(1)
+add_subdirectory ("src/Utils")
+add_subdirectory ("src/Test")
+add_subdirectory ("src/LogY")
 add_subdirectory ("src/TemplateProject")
 add_subdirectory ("src/DesignMode")
-add_subdirectory ("src/Test")
 add_subdirectory ("src/Network")
-add_subdirectory ("src/LogY")
 add_subdirectory ("src/TcpServer")
 add_subdirectory ("src/TcpClient")
+endif()
 
 

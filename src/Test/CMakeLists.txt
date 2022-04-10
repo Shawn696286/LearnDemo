@@ -7,6 +7,10 @@ cmake_minimum_required (VERSION 3.8)
 set(EXE_NAME Test)
 #############################################################
 
+find_package(OpenSSL REQUIRED)
+
+message(STATUS "openssl libs: ${OPENSSL_LIBRARIES}")
+
 # 添加工程文件
 if(0)
 	# 枚举下列*.h文件
@@ -43,18 +47,30 @@ include_directories(
 # 添加库目录
 link_directories(
 	../../common/lib
+	/usr/lib/x86_64-linux-gnu/
 )
 
+if(0)
 #链接库(需在add_executable前)
 if(UNIX)
 link_libraries(
+	libssl.so
 	logy
+	#utils
 	)
 else()
 link_libraries(
 	logy
 	)
 endif()
+endif()
+
+set(THIRD_LIBS
+	logy
+	utils
+)
 
 # 将源代码添加到此项目的可执行文件。
 add_executable (${EXE_NAME} ${SOURCES})
+target_link_libraries(${EXE_NAME} ${THIRD_LIBS})
+

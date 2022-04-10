@@ -13,6 +13,13 @@ include_directories(
 	../../common/inc
 	)
 
+link_libraries(
+	libssl.so
+	libcrypto.so
+	)
+	
+set(EXECUTABLE_OUTPUT_PATH ../../common/lib)
+
 # 将源代码添加到此项目的静态库。
-add_library(logy STATIC ${SOURCES})
+add_library(utils STATIC ${SOURCES})
                                          
