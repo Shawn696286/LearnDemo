@@ -12,13 +12,14 @@ public:
               const char* type, const char* format, ...);
     void logy(const char* func, const char* file, const int line,
               const char* type, const std::string& strLog);
+
+    void SetLogfilePath(const std::string& strLogfilePath);
+
 private:
     Logy();
     ~Logy();
     Logy(const Logy&) = delete;//明确拒绝
     Logy& operator=(const Logy&) = delete;//明确拒绝
-
-    int WriteFile(std::string strLog);
 
     std::string GetLocalTime();
 

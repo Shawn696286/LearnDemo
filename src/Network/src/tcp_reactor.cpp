@@ -301,7 +301,8 @@ int CTcpReactor::accept_callback(int nFd, int event, void* arg)
         return Y_Ret_Failed;
     }
 
-    LOGY_DEBUG("Clietn %s:%d connected\n", inet_ntoa(addrRemote.sin_addr), ntohs(addrRemote.sin_port));
+    LOGY_DEBUG("Clietn %s:%d connected.total_connect = %d\n", inet_ntoa(addrRemote.sin_addr), ntohs(addrRemote.sin_port),
+               m_mapEvent.size());
 
     #ifdef USE_MULTI_CB
     SetEventCallback(nNewFd, &CTcpReactor::read_callback, Read_Event, NULL);

@@ -31,3 +31,8 @@ LOGY_API void logy_log(const char* func, const char* file, const int line,
     }
     Logy::GetInstance()->logy(func, file, line, type, strLog);
 }
+
+LOGY_API void logy_set_logfile_path(const std::string& strLogfilePath)
+{
+    Logy::GetInstance()->SetLogfilePath(strLogfilePath);
+}

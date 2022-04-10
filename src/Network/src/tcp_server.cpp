@@ -28,13 +28,14 @@ int CTcpServer::InitServer(int nPort)
     if(bind(m_nListenSock, (sockaddr*)&sin, sizeof(sockaddr_in)) == SOCKET_ERROR)
     {
         LOGY_DEBUG("bind error !port = %d\n", nPort);
+        return Y_Ret_Failed;
     }
 
     //¿ªÊ¼¼àÌý
     if(listen(m_nListenSock, 5) == SOCKET_ERROR)
     {
         LOGY_DEBUG("listen error !port = %d\n", nPort);
-        return 0;
+        return Y_Ret_Failed;
     }
 
     LOGY_DEBUG("listen success, port = %d\n", nPort);

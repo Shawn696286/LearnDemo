@@ -34,4 +34,4 @@ const int MAX_BUF_SIZE = 1024;
 const int MAX_RECV_BUF = 1024 * 10;
 
 //< epoll 最大事件数
-const int MAX_POLL_SIZE = 1024;
+const int MAX_POLL_SIZE = 102400;

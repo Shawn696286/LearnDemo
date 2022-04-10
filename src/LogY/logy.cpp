@@ -2,10 +2,13 @@
 #include <stdarg.h>
 #include <time.h>
 #include <string.h>
+#include <stdio.h>
+#include <stdlib.h>
 #include "logy.h"
 
 static FILE* g_pFile = nullptr;
 static time_t g_loacl_time;
+static std::string g_strLogfilePath = "./main.log";
 Logy* Logy::m_pSelf = new Logy;
 static const int LEN_LOG_STR = 4096;
 static const int LEN_TIME_STR = 128;
@@ -22,13 +25,6 @@ Logy* Logy::GetInstance()
 
 Logy::Logy()
 {
-    // 打开日志文件
-    g_pFile = fopen("./main.log", "a");
-
-    if(nullptr == g_pFile)
-    {
-        printf("Logy init failed,fopen failed!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\n");
-    }
 }
 
 Logy::~Logy()
@@ -38,6 +34,17 @@ Logy::~Logy()
 void Logy::logy(const char* func, const char* file, const int line,
                 const char* type, const char* format, ...)
 {
+    if(!g_pFile)
+    {
+        // 打开日志文件
+        g_pFile = fopen(g_strLogfilePath.c_str(), "a+");
+
+        if(nullptr == g_pFile)
+        {
+            printf("Logy init failed,fopen failed!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\n");
+        }
+    }
+
     std::string strLog;
     {
         std::lock_guard<std::mutex> oGuard(g_oLockLogbuf);
@@ -70,6 +77,17 @@ void Logy::logy(const char* func, const char* file, const int line,
 
 void Logy::logy(const char* func, const char* file, const int line, const char* type, const std::string& strLog)
 {
+    if(!g_pFile)
+    {
+        // 打开日志文件
+        g_pFile = fopen(g_strLogfilePath.c_str(), "a+");
+
+        if(nullptr == g_pFile)
+        {
+            printf("Logy init failed,fopen failed!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\n");
+        }
+    }
+
     // 写入到日志文件中
     if(g_pFile != NULL)
     {
@@ -87,9 +105,9 @@ void Logy::logy(const char* func, const char* file, const int line, const char* 
            file, line, strLog.c_str());
 }
 
-int Logy::WriteFile(std::string)
+void Logy::SetLogfilePath(const std::string& strLogfilePath)
 {
-    return 0;
+    g_strLogfilePath = strLogfilePath;
 }
 
 std::string Logy::GetLocalTime()
@@ -101,6 +119,3 @@ std::string Logy::GetLocalTime()
     strftime(g_time_str, sizeof(g_time_str), "[%Y.%m.%d %X]", localtime(&g_loacl_time));
     return g_time_str;
 }
-
-
-

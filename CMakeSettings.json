@@ -15,7 +15,7 @@
       "name": "Linux-GCC-Debug",
       "generator": "Ninja",
       "configurationType": "Debug",
-      "cmakeExecutable": "/usr/bin/cmake",
+      "cmakeExecutable": "/usr/bin/cmake/bin/cmake",
       "remoteCopySourcesExclusionList": [ ".vs", ".git", "out" ],
       "buildCommandArgs": "",
       "ctestCommandArgs": "",

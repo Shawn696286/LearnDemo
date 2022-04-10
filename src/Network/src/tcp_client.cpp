@@ -1,5 +1,11 @@
 #include "tcp_client.h"
 
+CTcpClient::CTcpClient(): CNetBase()
+{
+    m_nSock = -1;
+    m_nPort = -1;
+}
+
 int CTcpClient::InitClient(std::string strIp, int nPort)
 {
     // 创建一个TCP的socket
@@ -7,7 +13,7 @@ int CTcpClient::InitClient(std::string strIp, int nPort)
 
     if(m_nSock == INVALID_SOCKET)
     {
-        LOGY_DEBUG("create socket failed,ret = %d\n", m_nSock);
+        LOGY_DEBUG("create socket error...%s\n", strerror(errno));
         return Y_Ret_Failed;
     }
 
@@ -62,4 +68,9 @@ int CTcpClient::OnRecv(std::string strMsg)
 {
     LOGY_DEBUG("socket recv msg = %s\n", strMsg.c_str());
     return Y_Ret_Ok;
+}
+
+int CTcpClient::CloseClient()
+{
+
 }
