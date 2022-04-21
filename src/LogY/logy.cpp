@@ -1,9 +1,9 @@
+#define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
 #include <stdarg.h>
 #include <time.h>
 #include <string.h>
 #include "logy.h"
-
 static FILE* g_pFile = nullptr;
 static time_t g_loacl_time;
 Logy* Logy::m_pSelf = new Logy;

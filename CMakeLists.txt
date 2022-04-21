@@ -12,7 +12,9 @@ set(PROJECT_ROOT_DIR ${PROJECT_SOURCE_DIR})
 set(LIBRARY_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/common/lib)
 set(EXECUTABLE_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/bin)
 
+if(UNIX)
 set(CMAKE_CXX_FLAGS   "-std=c++11 -g -Wall -fPIC -pthread -std=c++14") 
+endif()
 
 # 设置编译版本
 if(1)
@@ -26,8 +28,9 @@ add_subdirectory ("src/TemplateProject")
 add_subdirectory ("src/DesignMode")
 add_subdirectory ("src/Test")
 add_subdirectory ("src/LogY")
-if(_WIN32)
+if(WIN32)
 
+add_subdirectory ("src/GpuCmd")
 else()
 
 add_subdirectory ("src/Network")
