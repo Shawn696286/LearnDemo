@@ -54,5 +54,11 @@ public:
     */
     static bool InitializeDriverHook(int DriverType, int Adapter, GPUDRIVER* driver);
 
+    /*
+        Name: UninitializeGpuMon
+        Desc: Uninitializes the GpuMon DLL and anything else that needs uninitialization
+             done above us.
+    */
+    static void UninitializeGpuMon();
 
 };

@@ -61,5 +61,26 @@ int main()
         Sleep(1000);
     }
 
+    if(driver[Drv_D3DKMT].Uninitialize)
+    {
+        driver[Drv_D3DKMT].Uninitialize();
+    }
+
+    if(driver[Drv_NVAPI].Uninitialize)
+    {
+        driver[Drv_NVAPI].Uninitialize();
+    }
+
+    if(driver[Drv_AMDGS].Uninitialize)
+    {
+        driver[Drv_AMDGS].Uninitialize();
+    }
+
+    if(driver[Drv_IOKIT].Uninitialize)
+    {
+        driver[Drv_IOKIT].Uninitialize();
+    }
+
+    CGpuCmd::UninitializeGpuMon();
     return 0;
 }

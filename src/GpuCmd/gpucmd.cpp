@@ -130,3 +130,21 @@ bool CGpuCmd::InitializeDriverHook(int DriverType, int Adapter, GPUDRIVER* drive
 
     return true;
 }
+
+void CGpuCmd::UninitializeGpuMon()
+{
+    LOGY_DEBUG("Begin...");
+
+    if(hGpuMonDll)
+    {
+        LOGY_DEBUG("Freeing dynamic library handle...");
+        FreeLibrary(hGpuMonDll);
+        hGpuMonDll = NULL;
+    }
+    else
+    {
+        LOGY_DEBUG("GpuMon dynamic library not loaded!");
+    }
+
+    LOGY_DEBUG("Done");
+}
