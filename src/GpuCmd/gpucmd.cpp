@@ -12,13 +12,6 @@ HMODULE hGpuMonDll = nullptr;
 /* Driver handle instance*/
 GPUDRIVER driver[Drv_MAX];
 //std::unordered_map<GPUDRIVER> driver;
-CGpuCmd::CGpuCmd()
-{
-}
-
-CGpuCmd::~CGpuCmd()
-{
-}
 
 bool CGpuCmd::InitializeGpuMon()
 {

@@ -33,9 +33,6 @@ extern GPUDRIVER driver[Drv_MAX];
 class CGpuCmd
 {
 public:
-    CGpuCmd();
-    ~CGpuCmd();
-
     /*
         Name: InitializeGpuMon
         Desc: Initializes the GpuMon DLL for the appropriate architecture.
@@ -60,5 +57,4 @@ public:
              done above us.
     */
     static void UninitializeGpuMon();
-
 };
