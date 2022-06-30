@@ -6,9 +6,10 @@
 static const int LEN_LOG_STR = 4096;
 static char g_log_str[LEN_LOG_STR] = { 0 };
 static std::mutex g_oLockLogbuf;
-LOGY_API void logy_log(const char* func, const char* file, const int line,
-                       const char* type, const char* format, ...)
+LOG_Y_API void logy_log(const char* func, const char* file, const int line,
+                        const char* type, const char* format, ...)
 {
+    return;
     #if 0
     //windowÆ½Ì¨ÂÒÂë
     va_list va;

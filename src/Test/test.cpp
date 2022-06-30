@@ -12,9 +12,9 @@ CTest::CTest()
 
 void CTest::Worker()
 {
-    string strInput;
+    string strInput = "";
 
-    while("exit" != strInput)
+    while(strInput != "exit")
     {
         cout << "input :[1~" << Test_Type_Max - 1 << "]:";
         cin >> strInput;

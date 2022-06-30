@@ -106,7 +106,7 @@ int CTcpReactor::SetEventCallback(int nFd, event_callback pCb, EEventType nEvent
         if(nRet < 0)
         {
             LOGY_ERROR("epoll_ctl EPOLL_CTL_ADD failed, %d", errno);
-            nRet = Y_Ret_Failed;
+            nRet = Y_Ret_Error;
         }
 
         pEventItem->eEvent = Accept_Event;
@@ -118,7 +118,7 @@ int CTcpReactor::SetEventCallback(int nFd, event_callback pCb, EEventType nEvent
         if(nRet < 0)
         {
             LOGY_ERROR("epoll_ctl EPOLL_CTL_MOD failed, %d", errno);
-            nRet = Y_Ret_Failed;
+            nRet = Y_Ret_Error;
         }
 
         pEventItem->eEvent = Accept_Event;
@@ -214,7 +214,7 @@ int CTcpReactor::read_callback(int nFd, int event, void* arg)
 
         if(m_mapEvent.end() == iter)
         {
-            return Y_Ret_Failed;
+            return Y_Ret_Error;
         }
 
         pEventItem = iter->second;
@@ -256,7 +256,7 @@ int CTcpReactor::write_callback(int nFd, int event, void* arg)
 
         if(m_mapEvent.end() == iter)
         {
-            return Y_Ret_Failed;
+            return Y_Ret_Error;
         }
 
         pEventItem = iter->second;
@@ -298,7 +298,7 @@ int CTcpReactor::accept_callback(int nFd, int event, void* arg)
     if(nNewFd < 0)
     {
         LOGY_ERROR("nNewFd<0");
-        return Y_Ret_Failed;
+        return Y_Ret_Error;
     }
 
     LOGY_DEBUG("Clietn %s:%d connected.total_connect = %d\n", inet_ntoa(addrRemote.sin_addr), ntohs(addrRemote.sin_port),

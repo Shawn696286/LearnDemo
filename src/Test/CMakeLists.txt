@@ -29,7 +29,7 @@ elseif(1)
 	file(GLOB_RECURSE PROJECT_HEADERS *.h)
 	file(GLOB_RECURSE PROJECT_CPPS    *.cpp)
 
-	set(SOURCES ${PROJECT_HEADERS} ${PROJECT_CPPS})
+	set(SOURCES ${PROJECT_HEADERS} ${PROJECT_CPPS} )
 else()	
 	# 枚举将src目录的所有文件(不包含子目录)
 	aux_source_directory(src SOURCES)
@@ -38,9 +38,8 @@ endif()
 # 添加包含目录
 include_directories(
 	.
-	./src
-	./src/thread
-	./src/smart_pointers
+	./thread
+	./smart_pointers
 	../../common/inc
 	)
 	
