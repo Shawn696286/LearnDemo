@@ -20,6 +20,8 @@ set(EXECUTABLE_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/bin/${EXE_NAME})
 include_directories(
 	.
 	../../common/inc
+	../../common/inc/rmfs4.0
+	../../common/inc/librmfs5.0
 	)
 	
 # 添加库目录
@@ -50,8 +52,8 @@ link_libraries(
 	x64/Poco/PocoJSON${POSTFIX}
 	x64/openssl/libssl
 	x64/openssl/libcrypto
-	x64/avapi/avapi
-	x64/avapi/napi
+#	x64/avapi/avapi
+#	x64/avapi/napi
 	)
 if(UNIX)
 link_libraries(

@@ -1,8 +1,8 @@
 ﻿// C++.cpp: 定义应用程序的入口点。
 //
 #include "public.h"
-#include "rmfs4.0/api_rmfs.h"
 #include "librmfs5.0/api_rmfs_nxm.h"
+#include "rmfs4.0/api_rmfs.h"
 #include "Poco/Timer.h"
 #include "Poco/Thread.h"
 
@@ -78,7 +78,17 @@ struct VIDEO_DATA
     char        nAudioFormat;
     std::string encrypt_key_id;
 };
+struct MyStruct
+{
+    char a : 2;
+    char b : 6;
+};
 
+union UTest
+{
+    MyStruct c;
+    char d;
+};
 class TimerExample
 {
 public:
@@ -100,13 +110,14 @@ int main(int argc, char* argv[])
     n9m_fs_record_date_info_t* list = NULL;
     api_rmfs_get_stream_date_info(0, 0, 0xffffffff, list, 0);
 
+    api_rmfs_nxm_init();
+    api_rmfs_nxm_uinit();
+    api_rmfs_nxm_rebuild_rely(0, nullptr);
     api_rmfs_nxm_set_debug_level(0);
     api_rmfs_nxm_get_stream_date_info_num(0, 0, 0xffffffff);
     rmfs_nxm_record_date_info_t* list2 = NULL;
     api_rmfs_nxm_get_stream_date_info(0, 0x07, 0xffffffff, list2, 0);
 
-    api_rmfs_nxm_init();
-    api_rmfs_nxm_uinit();
     #endif
 
     //测试poco timer
@@ -149,7 +160,7 @@ int main(int argc, char* argv[])
     #endif
 
     //测试avapi
-    #if 1
+    #if 0
     int a = sizeof(char*);
     printf("char* size = %d\n", a);
     a = sizeof(void*);
@@ -191,6 +202,14 @@ int main(int argc, char* argv[])
     //    }
     //}
 
+    #endif
+
+    //< 测试位域大小端位
+    #if 1
+    UTest aa;
+    aa.c.a = 0;
+    aa.c.b = 1;
+    char d = aa.d;
     #endif
     getchar();
     return 0;

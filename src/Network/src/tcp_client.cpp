@@ -8,7 +8,7 @@ int CTcpClient::InitClient(std::string strIp, int nPort)
     if(m_nSock == INVALID_SOCKET)
     {
         LOGY_DEBUG("create socket failed,ret = %d\n", m_nSock);
-        return Y_Ret_Failed;
+        return Y_Ret_Error;
     }
 
     //指定连接的服务端信息
@@ -30,7 +30,7 @@ int CTcpClient::InitClient(std::string strIp, int nPort)
     {
         LOGY_DEBUG("socket connect failed\n");
         closesocket(m_nSock);
-        return Y_Ret_Failed;
+        return Y_Ret_Error;
     }
 
     return Y_Ret_Ok;
@@ -43,7 +43,7 @@ int CTcpClient::Send(std::string strMsg)
     if(SOCKET_ERROR == nRet)
     {
         LOGY_DEBUG("socket send failed\n");
-        return Y_Ret_Failed;
+        return Y_Ret_Error;
     }
 
     nRet = recv(m_nSock, m_pBuf, MAX_RECV_BUF - m_nBufSSize, 0);
@@ -51,7 +51,7 @@ int CTcpClient::Send(std::string strMsg)
     if(SOCKET_ERROR == nRet)
     {
         LOGY_DEBUG("socket recv failed\n");
-        return Y_Ret_Failed;
+        return Y_Ret_Error;
     }
 
     OnRecv(std::string(m_pBuf, nRet));

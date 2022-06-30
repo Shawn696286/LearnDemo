@@ -9,6 +9,7 @@ static std::mutex g_oLockLogbuf;
 LOG_Y_API void logy_log(const char* func, const char* file, const int line,
                         const char* type, const char* format, ...)
 {
+    return;
     #if 0
     //windowÆ½Ì¨ÂÒÂë
     va_list va;

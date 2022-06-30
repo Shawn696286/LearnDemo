@@ -9,6 +9,7 @@
 #include <vector>
 #include <memory>
 #include <malloc.h>
+#include <stdint.h>
 #ifndef _WIN32
     #include <unistd.h>
 #endif // _WIN32
@@ -22,7 +23,7 @@ struct MY_TIME
     int nMinute;
     int nSecond;
 };
-
+#define ul int
 struct VIDEO_DATA
 {
     char* ai_buf[256];
@@ -51,6 +52,52 @@ struct VIDEO_DATA
     unsigned char        nChannel;
     char        nAudioFormat;
     std::string encrypt_key_id;
+};
+
+struct SRtpHeader
+{
+    uint8_t version: 2;      /*协议版本*/
+    uint8_t padding: 1;       /*P*/
+    uint8_t extension: 1;     /*X*/
+    uint8_t csrc_count: 4;    /*CSRC个数*/
+    uint8_t marker: 1;        /*一帧是否结束*/
+    uint8_t payloadtype: 7;   /*载荷的数据类型*/
+    uint16_t seq;               /*序列号，第几个*/
+    uint32_t timestamp;         /*时间戳，第一个 */
+    uint32_t ssrc;              /*同步信源(SSRC)标识符*/
+};
+struct RTP_Header
+{
+    unsigned __int16 csrc_count : 4;
+    unsigned __int16 extension : 1;
+    unsigned __int16 padding : 1;
+    unsigned __int16 version : 2;
+    unsigned __int16 payloadtype : 7;
+    unsigned __int16 marker : 1;
+
+    unsigned __int16 seq;
+    unsigned __int32 timestamp;
+    unsigned __int32 ssrc;
+};
+
+struct RTP_Header2
+{
+    uint16_t csrc_count : 4;
+    uint16_t extension : 1;
+    uint16_t padding : 1;
+    uint16_t version : 2;
+    uint16_t payloadtype : 7;
+    uint16_t marker : 1;
+
+    uint16_t seq;
+    uint32_t timestamp;
+    uint32_t ssrc;
+};
+struct MyStruct
+{
+    uint16_t payloadtype : 7;
+    uint16_t marker : 1;
+
 };
 //< 定义安全释放宏
 #define SAFE_DELETE(p)          if(p) { delete (p); (p) = nullptr; }
@@ -232,6 +279,60 @@ int main(int argc, char* argv[])
         }
     }
 
+    #endif
+
+    //测试rtp头解析
+    #if 0
+    uint8_t pRtpHeader[] = { 0x80, 0x88, 0x0, 0x4, 0x0, 0x0, 0x1, 0x53, 0x2, 0xab, 0xe6, 0xc4, 0xd4, 0x56, 0x5a, 0x54, 0x44, 0xd1 };
+    SRtpHeader* psRtpHeader = (SRtpHeader*)pRtpHeader;
+    RTP_Header* psRtpHeader2 = (RTP_Header*)pRtpHeader;
+    RTP_Header2* psRtpHeader3 = (RTP_Header2*)pRtpHeader;
+
+    uint8_t nPayLoadType = 0x88;
+    uint8_t nnn = nPayLoadType & 0x7f;
+    uint8_t nPayLoadType2 = 0x60;
+    uint8_t nnn2 = nPayLoadType2 & 0x7f;
+    uint8_t nPayLoadType3 = 0xe0;
+    uint8_t nnn3 = nPayLoadType3 & 0x7f;
+    MyStruct* pp = (MyStruct*)&nPayLoadType;
+    MyStruct* pp2 = (MyStruct*)&nPayLoadType2;
+    MyStruct* pp3 = (MyStruct*)&nPayLoadType3;
+    uint8_t nw = nPayLoadType << 1 >> 1;
+    uint8_t nw2 = nPayLoadType2 << 1 >> 1;
+    uint8_t nw3 = nPayLoadType3 << 1 >> 1;
+
+    SRtpHeader oRtpHeadr;
+    oRtpHeadr.version = (pRtpHeader[0] & 0xc0) >> 6;
+    oRtpHeadr.padding = (pRtpHeader[0] & 0x20) >> 5;
+    oRtpHeadr.extension = (pRtpHeader[0] & 0x10) >> 4;
+    oRtpHeadr.csrc_count = pRtpHeader[0] & 0xf;
+    oRtpHeadr.marker = (pRtpHeader[1] & 0x80) >> 7;
+    oRtpHeadr.payloadtype = pRtpHeader[1] & 0x7f;
+    oRtpHeadr.seq = pRtpHeader[2] << 1 * 8 | pRtpHeader[3];
+    oRtpHeadr.timestamp = pRtpHeader[4] << 3 * 8 | pRtpHeader[5] << 2 * 8 |
+                          pRtpHeader[6] << 1 * 8 | pRtpHeader[7] ;
+    oRtpHeadr.ssrc = pRtpHeader[8] << 3 * 8 | pRtpHeader[9] << 2 * 8 |
+                     pRtpHeader[10] << 1 * 8 | pRtpHeader[11];
+
+    uint8_t* str1 = (uint8_t*)"123456";
+    std::vector<uint8_t> vec;
+    vec.resize(strlen((char*)str1) * 2);
+    memcpy(&vec[0], str1, strlen((char*)str1));
+    #endif
+
+    //测试vector
+    #if 1
+    std::vector<int> vceInt;
+    vceInt.reserve(4);
+    vceInt.push_back(1);
+    vceInt.push_back(2);
+    vceInt.push_back(3);
+    vceInt.push_back(4);
+    vceInt.push_back(5);
+    vceInt.push_back(6);
+    vceInt.pop_back();
+    vceInt.pop_back();
+    vceInt.pop_back();
     #endif
     getchar();
     return 0;

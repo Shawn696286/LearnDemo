@@ -16,18 +16,43 @@ contains(QT_ARCH, x86_64){
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-    cplayframe.cpp \
-    main.cpp \
-    cmainwin.cpp
+    core/D3DVidRender.cpp \
+    core/cd3dx_dxva2_render.cpp \
+    core/cd3dx_spirte_render.cpp \
+    core/cdecode_dxva2.cpp \
+    core/cdecode_hard.cpp \
+    core/cdemux.cpp \
+    core/csws.cpp \
+    core/ffmpeg_dxva2.cpp \
+    core/idecode.cpp \
+    core/irender.cpp \
+    play/cplay_thread.cpp \
+    ui/cmainwin.cpp \
+    ui/cplayframe.cpp
 
 HEADERS += \
-    cmainwin.h \
-    cplayframe.h \
-    public.h
+    core/D3DVidRender.h \
+    core/cd3dx_dxva2_render.h \
+    core/cd3dx_spirte_render.h \
+    core/cdecode_dxva2.h \
+    core/cdecode_hard.h \
+    core/cdemux.h \
+    core/csws.h \
+    core/ffmpeg_dxva2.h \
+    core/idecode.h \
+    core/irender.h \
+    play/cplay_thread.h \
+    ui/cmainwin.h \
+    ui/cplayframe.h
 
 FORMS += \
-    cmainwin.ui \
-    cplayframe.ui
+    ui/cmainwin.ui \
+    ui/cplayframe.ui
+
+INCLUDEPATH += \
+    core \
+    play \
+    ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

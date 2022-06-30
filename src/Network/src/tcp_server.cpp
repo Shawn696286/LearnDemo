@@ -8,7 +8,7 @@ int CTcpServer::InitServer(int nPort)
     if(m_nListenSock == INVALID_SOCKET)
     {
         LOGY_DEBUG("create socket failed,port = %d\n", nPort);
-        return Y_Ret_Failed;
+        return Y_Ret_Error;
     }
 
     //把socket设置为非阻塞方式
